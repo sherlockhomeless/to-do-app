@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo
+  name: todo-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: todo
+      app: todo-pod
   template:
     metadata:
       labels:
-        app: todo
+        app: todo-pod
     spec:
       containers:
-        - name: todo
-          image: manuelleppertt/todo_app:v1
+        - name: todo-pod
+          image: dupalli/g1-to-do-app:v1
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           readinessProbe:
             httpGet:
                path: /
-               port: 3000
-            initialDelaySeconds: 30
-          periodSeconds: 3
-            livenessProbe:
+               port: 80
+            initialDelaySeconds: 180
+            periodSeconds: 3
+          livenessProbe:
             httpGet:
                path: /
-               port: 3000
-            initialDelaySeconds: 30
+               port: 80
+            initialDelaySeconds: 180
             periodSeconds: 3
