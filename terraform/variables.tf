@@ -14,3 +14,7 @@ variable "cluster-name" {
   default = "g1_cluster"
   type    = string
 }
+
+variable "tf-bucket-name" {
+  default = "g1-s3-bucket-tf"
+}
